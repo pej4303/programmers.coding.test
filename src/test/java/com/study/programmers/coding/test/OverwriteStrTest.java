@@ -2,6 +2,8 @@ package com.study.programmers.coding.test;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.stream.IntStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -28,5 +30,12 @@ class OverwriteStrTest {
         OverwriteStr test = new OverwriteStr();
 
         assertEquals(test.solution(myStr, overwriteStr, n), result);
+    }
+
+    @Test
+    void test3() {
+        int sum = IntStream.rangeClosed(0, 4).filter(i -> i % 2 != 0).sum();
+
+        System.out.println(sum);
     }
 }
