@@ -3,6 +3,7 @@ package com.study.programmers.coding.test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
@@ -71,4 +72,38 @@ public class SolutionTest {
 
         assertEquals(result, answer);
     }
+
+    @Test
+    @DisplayName("마지막 두 원소")
+    void test3() {
+        /**
+         * 마지막 원소가 그전 원소보다 크면 마지막 원소에서 그전 원소를 뺀 값을
+         * 마지막 원소가 그전 원소보다 크지 않다면 마지막 원소를 두 배한 값을 추가하여 return하도록 solution 함수를 완성해주세요.
+         */
+        int[] num_list = new int[]{2, 1, 6};
+        int[] result = new int[]{2, 1, 6, 5};
+
+        int num1 = num_list[num_list.length - 1];
+        int num2 = num_list[num_list.length - 2];
+
+        int tmp = (num1 > num2) ? num1 - num2 : num1 * 2;
+
+        // 원본 배열을 복사하여 새로운 배열을 생성
+        int[] answer = Arrays.copyOf(num_list, num_list.length + 1);
+
+        // 마지막 위치에 요소를 추가
+        answer[num_list.length] = tmp;
+
+        assertEquals(result[result.length-1], answer[answer.length-1]);
+    }
+
+    @Test
+    void test4() {
+        int n = 10;
+
+        int[] arr = IntStream.rangeClosed(1, n).filter(i -> i % 2 != 0).toArray();
+
+        Arrays.stream(arr).forEach(System.out::println);
+    }
+
 }
