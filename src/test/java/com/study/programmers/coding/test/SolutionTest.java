@@ -3,9 +3,10 @@ package com.study.programmers.coding.test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -98,12 +99,193 @@ public class SolutionTest {
     }
 
     @Test
+    @DisplayName("배열의 최빈값 구하기")
     void test4() {
-        int n = 10;
+        // 최빈값 : 최고 빈도
+        int[] array = {80,80,9};
+//        int[] array = {1, 1, 2, 2};
+//        int[] array = {1};
+//        int result = 3;
+        int answer = 0;
 
-        int[] arr = IntStream.rangeClosed(1, n).filter(i -> i % 2 != 0).toArray();
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int num : array) {
+            if (map.containsKey(num)) {
+                map.put(num, map.get(num) + 1);
+            } else {
+                map.put(num, 1);
+            }
+        }
 
-        Arrays.stream(arr).forEach(System.out::println);
+        Stream.of(map).forEach(System.out::println);
+
+        // 최빈값 찾기
+        int maxNum = Collections.max(map.values()).intValue();
+        System.out.println("maxNum = " + maxNum);
+
+        int dup = 0;
+        for (int tmp : map.values()) {
+            if (tmp == maxNum) {
+                dup++;
+            }
+        }
+
+        if (dup > 1) {
+            answer = -1;
+        } else {
+            OptionalInt first = Arrays.stream(array).filter(i -> i == maxNum).findFirst();
+            answer = first.getAsInt();
+        }
+
+        System.out.println("answer = " + answer);
     }
 
+
+    @Test
+    @DisplayName("배열의 최빈값 구하기2")
+    void test5() {
+        // 최빈값 : 최고 빈도
+        int[] array = {80,80,9};
+//        int[] array = {1, 1, 2, 2};
+//        int[] array = {1};
+//        int result = 3;
+        int answer = 0;
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int num : array) {
+            if (map.containsKey(num)) {
+                map.put(num, map.get(num) + 1);
+            } else {
+                map.put(num, 1);
+            }
+        }
+
+        Stream.of(map).forEach(System.out::println);
+
+        // 최빈값 찾기
+        int maxNum = Collections.max(map.values()).intValue();
+        System.out.println("maxNum = " + maxNum);
+
+        int dup = 0;
+        for (int tmp : map.values()) {
+            if (tmp == maxNum) {
+                dup++;
+            }
+        }
+
+        if (dup > 1) {
+            answer = -1;
+        } else {
+            OptionalInt first = Arrays.stream(array).filter(i -> i == maxNum).findFirst();
+            answer = first.getAsInt();
+        }
+
+        System.out.println("answer = " + answer);
+    }
+
+    @Test
+    @DisplayName("최빈값 구하기2")
+    void test7() {
+//        int[] array = {80,80,9};
+        int[] array = {1, 1, 2, 2};
+//        int[] array = {1};
+        int result = -1;
+        int answer = 0;
+
+        boolean isValidate = 0 < array.length && array.length < 100;
+
+        if ( isValidate) {
+            HashMap<Integer, Integer> map = new HashMap<>();
+            for (int num : array) {
+                if ( 0 <= num && num < 1000) {
+                    if (map.containsKey(num)) {
+                        map.put(num, map.get(num) + 1);
+                    } else {
+                        map.put(num, 1);
+                    }
+                }
+            }
+
+            // 배열의 최빈값
+            int maxNum = Collections.max(map.values()).intValue();
+
+            // 최빈값이 여러개인지 확인
+            int dup = 0;
+            for (int tmp : map.values()) {
+                if (tmp == maxNum) {
+                    dup++;
+                }
+            }
+
+            if (dup > 1) {
+                answer = -1;
+            } else {
+                OptionalInt first = Arrays.stream(array).filter(i -> i == maxNum).findFirst();
+                answer = first.getAsInt();
+            }
+        }
+
+        assertEquals(answer, result);
+    }
+
+    @Test
+    @DisplayName("최빈값 구하기3 - gpt")
+    void test8() {
+        int[] array = {1, 1, 2, 2};
+//        int[] array = {1};
+        int result = -1;
+
+        Map<Integer, Integer> countMap = new HashMap<>();
+        for (int num : array) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+        int answer = -1;
+        int maxCount = 0;
+
+        // countMap을 순회하면서 최빈값 찾기
+        for (Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
+            int currentCount = entry.getValue();
+            if (currentCount > maxCount) {
+                maxCount = currentCount;
+                answer = entry.getKey();
+            } else if (currentCount == maxCount) {
+                // 최빈값이 여러 개인 경우 -1 반환
+                answer = -1;
+            }
+        }
+
+        assertEquals(answer, result);
+    }
+
+    @Test
+    @DisplayName("배열의 평균값 구하기")
+    void test9() {
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        double result = 5.5;
+
+        double answer = Arrays.stream(array).average().orElse(0);
+
+        assertEquals(answer, result);
+    }
+
+    @Test
+    @DisplayName("가격 구하기")
+    void test10() {
+        int price = 150000;
+        int answer = 0;
+        int result = 142500;
+        double discount = 0.0;
+
+        if ( price >= 500000) {
+            discount = 0.2;
+        } else if (price < 500000 && price >= 300000) {
+            discount = 0.1;
+        } else if (price < 300000 && price >= 10000) {
+            discount = 0.05;
+        }
+        answer = (int) Math.ceil(price - (price * discount));
+
+        assertEquals(answer, result);
+    }
 }
