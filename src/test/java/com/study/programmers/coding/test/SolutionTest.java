@@ -140,7 +140,6 @@ public class SolutionTest {
         System.out.println("answer = " + answer);
     }
 
-
     @Test
     @DisplayName("배열의 최빈값 구하기2")
     void test5() {
@@ -287,5 +286,16 @@ public class SolutionTest {
         answer = (int) Math.ceil(price - (price * discount));
 
         assertEquals(answer, result);
+    }
+
+    @Test
+    @DisplayName("배열 역순")
+    void test11() {
+        int[] num_list = {1, 2, 3, 4, 5};
+        int[] answer = {};
+        int[] result = {5, 4, 3, 2, 1};
+
+        answer = IntStream.rangeClosed(1, num_list.length).map(i -> num_list[num_list.length-i]).toArray();
+        assertArrayEquals(answer, result);
     }
 }
