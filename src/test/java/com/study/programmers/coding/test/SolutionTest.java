@@ -311,4 +311,21 @@ public class SolutionTest {
 
         assertEquals(answer, result);
     }
+
+    /**
+     * 직각삼각형 출력하기(별 찍기)
+     *
+     * @date  2023-12-25
+     * @param args
+     */
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        if ( 1 <= n && n <= 10) {
+            for ( int i=1; i<=n; i++ ) {
+                System.out.println("*".repeat(i));
+            }
+        }
+    }
 }
