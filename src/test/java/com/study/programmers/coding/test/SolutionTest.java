@@ -298,4 +298,17 @@ public class SolutionTest {
         answer = IntStream.rangeClosed(1, num_list.length).map(i -> num_list[num_list.length-i]).toArray();
         assertArrayEquals(answer, result);
     }
+
+    @Test
+    @DisplayName("문자열 역순")
+    void test12() {
+        String my_string = "jaron";
+        String answer = "";
+        String result = "noraj";
+
+        StringBuffer sb = new StringBuffer(my_string);
+        answer = sb.reverse().toString();
+
+        assertEquals(answer, result);
+    }
 }
