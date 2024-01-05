@@ -311,16 +311,75 @@ public class SolutionTest {
 
         assertEquals(answer, result);
     }
+    @Test
+    void test13() {
+        int n = 10;
+        int result = 30;
+        int answer = 0;
+        answer = IntStream.rangeClosed(1, n).filter(i -> i % 2 == 0).sum();
+
+        assertEquals(answer, result);
+    }
 
     @Test
-    @DisplayName("")
-    void test13() {
-        String my_string = "jaron";
-        String answer = "";
-        String result = "noraj";
+    void test14() {
+        String s = " for the last week ";
 
-        StringBuffer sb = new StringBuffer(my_string);
-        answer = sb.reverse().toString();
+        String result = " For The Last Week ";
+
+        StringBuffer sb = new StringBuffer();
+
+        String[] arr = s.split(" ");
+
+        for (int i=0; i<arr.length; i++) {
+            if (  !arr[i].isBlank() && Character.isLetter(arr[i].charAt(0)) ) {
+                sb.append(Character.toUpperCase(arr[i].charAt(0)));
+                for (int j=1; j<arr[i].toCharArray().length; j++) {
+                    sb.append(Character.toLowerCase(arr[i].charAt(j)));
+                }
+
+            } else {
+                // 대문자로 변환하지 않음
+                sb.append(arr[i]);
+                sb.append(" ");
+            }
+
+        }
+        System.out.println(sb.toString());
+        assertEquals(sb.toString(), result);
+    }
+
+    @Test
+    void test15() {
+        String s = "pPoooyY";
+        boolean answer = true;
+
+//        boolean result = true;
+//
+//        int cntP = 0;
+//        int cntY = 0;
+//
+//        long test = s.chars().filter(e -> 'P' == e).count();
+//        System.out.println(test);
+//
+//        for (String str : s.toLowerCase().split("")) {
+//            if (str.equals("p")) {
+//                cntP++;
+//            }
+//
+//            if (str.equals("y")) {
+//                cntY++;
+//            }
+//        }
+//
+//        if ( (cntP == cntY) || (cntP == 0 && cntY == 0) ) {
+//            answer = true;
+//        } else {
+//            answer = false;
+//        }
+
+        // 이렇게 간단하다니...
+        boolean result = s.toLowerCase().chars().filter(i -> 'p' == i).count() == s.toLowerCase().chars().filter(i -> 'y' == i).count();
 
         assertEquals(answer, result);
     }
@@ -332,13 +391,25 @@ public class SolutionTest {
      * @param args
      */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();
+//
+//        if ( 1 <= n && n <= 10) {
+//            for ( int i=1; i<=n; i++ ) {
+//                System.out.println("*".repeat(i));
+//            }
+//        }
 
-        if ( 1 <= n && n <= 10) {
-            for ( int i=1; i<=n; i++ ) {
-                System.out.println("*".repeat(i));
-            }
-        }
+//        int min = IntStream.rangeClosed(3, 10).filter(i -> 10 % i == 1).summaryStatistics().getMin();
+//        System.out.println("min = " + min);
+
+        int min = Arrays.stream("1 2 3 4".split(" ")).mapToInt(Integer::parseInt).summaryStatistics().getMin();
+        int max = Arrays.stream("1 2 3 4".split(" ")).mapToInt(Integer::parseInt).summaryStatistics().getMax();
+
+//        int min = Stream.of( "1 2 3 4").mapToInt(i -> 1).summaryStatistics().getMin();
+        System.out.println("min = " + min);
+
+//        int max = Stream.of( "1 2 3 4").mapToInt(i -> 1).summaryStatistics().getMax();
+        System.out.println("max = " + max);
     }
 }
