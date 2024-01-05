@@ -312,6 +312,19 @@ public class SolutionTest {
         assertEquals(answer, result);
     }
 
+    @Test
+    @DisplayName("")
+    void test13() {
+        String my_string = "jaron";
+        String answer = "";
+        String result = "noraj";
+
+        StringBuffer sb = new StringBuffer(my_string);
+        answer = sb.reverse().toString();
+
+        assertEquals(answer, result);
+    }
+
     /**
      * 직각삼각형 출력하기(별 찍기)
      *
