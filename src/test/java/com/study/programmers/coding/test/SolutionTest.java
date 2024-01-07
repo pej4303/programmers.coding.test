@@ -384,6 +384,48 @@ public class SolutionTest {
         assertEquals(answer, result);
     }
 
+
+    @Test
+    void test16() {
+        int answer = 2;
+        String[] spell = {"z", "d", "x"};
+        String[] dic = {"def", "dww", "dzx", "loveaw"};
+        int result = 1;
+//        String regex = "(?=.*z)(?=.*d)(?=.*x).*";
+
+//        String[] spell = {"p", "o", "s"};
+//        String[] dic = {"sod", "eocd", "qixm", "adio", "soo"};
+//        int result = 2;
+
+//        String regex = ".*[" + String.join("", spell) + "].*";
+//        System.out.println("regex = " + regex);
+
+//        String regex = "(?=.*p)(?=.*o)(?=.*s).*";
+
+        StringBuffer sb = new StringBuffer();
+        for (String s : spell) {
+            sb.append("(?=.*");
+            sb.append(s);
+            sb.append(")");
+        }
+        sb.append(".*");
+
+        String regex = sb.toString();
+
+        if (1 <= dic.length && dic.length <= 10 ) {
+            for (String str : dic) {
+                if ( str.matches(regex) ) {
+                    System.out.println(str);
+                    answer = 1;
+                    break;
+                }
+            }
+        }
+
+        assertEquals(answer, result);
+    }
+
+
     /**
      * 직각삼각형 출력하기(별 찍기)
      *
@@ -411,5 +453,7 @@ public class SolutionTest {
 
 //        int max = Stream.of( "1 2 3 4").mapToInt(i -> 1).summaryStatistics().getMax();
         System.out.println("max = " + max);
+
     }
 }
+
