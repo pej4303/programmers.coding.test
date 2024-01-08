@@ -432,28 +432,33 @@ public class SolutionTest {
      * @date  2023-12-25
      * @param args
      */
-    public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//        int n = sc.nextInt();
-//
-//        if ( 1 <= n && n <= 10) {
-//            for ( int i=1; i<=n; i++ ) {
-//                System.out.println("*".repeat(i));
-//            }
-//        }
-
-//        int min = IntStream.rangeClosed(3, 10).filter(i -> 10 % i == 1).summaryStatistics().getMin();
+//    public static void main(String[] args) {
+//        int min = Arrays.stream("1 2 3 4".split(" ")).mapToInt(Integer::parseInt).summaryStatistics().getMin();
+//        int max = Arrays.stream("1 2 3 4".split(" ")).mapToInt(Integer::parseInt).summaryStatistics().getMax();
 //        System.out.println("min = " + min);
+//        System.out.println("max = " + max);
+//
+//    }
 
-        int min = Arrays.stream("1 2 3 4".split(" ")).mapToInt(Integer::parseInt).summaryStatistics().getMin();
-        int max = Arrays.stream("1 2 3 4".split(" ")).mapToInt(Integer::parseInt).summaryStatistics().getMax();
+    public static void main(String[] args) {
+        int[] arr = {1, 1, 3, 3, 0, 1, 1};
+        int[] answer;
 
-//        int min = Stream.of( "1 2 3 4").mapToInt(i -> 1).summaryStatistics().getMin();
-        System.out.println("min = " + min);
+        ArrayList<Integer> result = new ArrayList<>();
+        result.add(arr[0]);
 
-//        int max = Stream.of( "1 2 3 4").mapToInt(i -> 1).summaryStatistics().getMax();
-        System.out.println("max = " + max);
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] != arr[i - 1]) {
+                result.add(arr[i]);
+            }
+        }
 
+        answer = result.stream().mapToInt(Integer::intValue).toArray();
+
+        System.out.println(result.toString());
+//        answer = (int[]) result.toArray();
+        System.out.println(answer);
+//        return answer;
     }
 }
 
