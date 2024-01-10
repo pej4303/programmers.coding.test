@@ -3,9 +3,11 @@ package com.study.programmers.coding.test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigInteger;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -423,6 +425,51 @@ public class SolutionTest {
         }
 
         assertEquals(answer, result);
+    }
+
+    @Test
+    void test18() {
+        long n = 12345;
+        int[] result = {5, 4, 3, 2, 1};
+        int[] answer = {};
+
+//        for (String str : String.valueOf(n).split("")) {
+//
+//        }
+
+        answer = LongStream.of(String.valueOf(n).split("")).mapToInt(Integer::parseInt).toArray();
+
+        assertArrayEquals(result, answer);
+    }
+
+    @Test
+    @DisplayName("이진수 TO 십진수")
+    void test17() {
+        String binary1 = "01001"; // 첫 번째 이진수
+        String binary2 = "11110"; // 두 번째 이진수
+
+        int decimalNumber = Integer.parseInt(binary1, 2);
+        System.out.println("십진수: " + decimalNumber);
+
+        int decimalNumber2 = Integer.parseInt(binary2, 2);
+        System.out.println("십진수: " + decimalNumber2);
+
+        String sum = Integer.toBinaryString(decimalNumber + decimalNumber2);
+        System.out.println("결과 = " + sum);
+
+        String result = Integer.toBinaryString(39);
+        System.out.println("결과 = " + result);
+
+//
+//        BigInteger num1 = new BigInteger(binary1, 2);
+//        BigInteger num2 = new BigInteger(binary2, 2);
+//
+//        BigInteger sum = num1.add(num2);
+//
+//        // 결과를 5비트로 패딩하여 이진수로 변환하여 출력
+//        int desiredBitLength = 5;
+//        String sumBinary = String.format("%" + desiredBitLength + "s", sum.toString(2)).replace(' ', '0');
+//        System.out.println("이진수 덧셈 결과: " + sumBinary);
     }
 
 
