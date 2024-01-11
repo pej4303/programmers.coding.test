@@ -3,11 +3,9 @@ package com.study.programmers.coding.test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigInteger;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
-import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -429,17 +427,25 @@ public class SolutionTest {
 
     @Test
     void test18() {
-        long n = 12345;
-        int[] result = {5, 4, 3, 2, 1};
-        int[] answer = {};
+        long n = 118372;
+        long result = 873211;
+        long answer;
 
-//        for (String str : String.valueOf(n).split("")) {
-//
-//        }
+        String[] arr = String.valueOf(n).split("");
 
-        answer = LongStream.of(String.valueOf(n).split("")).mapToInt(Integer::parseInt).toArray();
+        Arrays.sort(arr);
 
-        assertArrayEquals(result, answer);
+        StringBuffer sb = new StringBuffer();
+        for (String str : arr) {
+            sb.append(str);
+        }
+
+        answer = Long.parseLong(sb.reverse().toString());
+
+        assertEquals(result, answer);
+
+        long test = IntStream.rangeClosed(3, 5).summaryStatistics().getSum();
+        System.out.println(test);
     }
 
     @Test
@@ -487,25 +493,42 @@ public class SolutionTest {
 //
 //    }
 
+//    public static void main(String[] args) {
+//        int[] arr = {1, 1, 3, 3, 0, 1, 1};
+//        int[] answer;
+//
+//        ArrayList<Integer> result = new ArrayList<>();
+//        result.add(arr[0]);
+//
+//        for (int i = 1; i < arr.length; i++) {
+//            if (arr[i] != arr[i - 1]) {
+//                result.add(arr[i]);
+//            }
+//        }
+//
+//        answer = result.stream().mapToInt(Integer::intValue).toArray();
+//
+//        System.out.println(result.toString());
+//        System.out.println(answer);
+//    }
+
     public static void main(String[] args) {
-        int[] arr = {1, 1, 3, 3, 0, 1, 1};
-        int[] answer;
+        int[] arr = {1,1,8,3,7,2};
 
-        ArrayList<Integer> result = new ArrayList<>();
-        result.add(arr[0]);
+        long n = 118372;
 
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i] != arr[i - 1]) {
-                result.add(arr[i]);
-            }
-        }
+        System.out.println("## Long.reverse = " + Long.reverse(n));
 
-        answer = result.stream().mapToInt(Integer::intValue).toArray();
+//        Arrays.sort(arr);
 
-        System.out.println(result.toString());
-//        answer = (int[]) result.toArray();
-        System.out.println(answer);
-//        return answer;
+//        LongStream.of(n).mapToInt()
+
+        Integer[] arr3 = Arrays.stream(arr).boxed().toArray(Integer[]::new);
+        Arrays.sort(arr3, Collections.reverseOrder());
+
+//        Arrays.stream(arr3).mapToLong(Long::).toString();
+//        System.out.println(Arrays.toString(arr3));
+
     }
 }
 
