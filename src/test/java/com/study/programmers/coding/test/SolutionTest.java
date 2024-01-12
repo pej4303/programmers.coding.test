@@ -427,25 +427,25 @@ public class SolutionTest {
 
     @Test
     void test18() {
-        long n = 118372;
-        long result = 873211;
-        long answer;
+//        long n = 121;
+//        long result = 144;
 
-        String[] arr = String.valueOf(n).split("");
+        long n = 3;
+        long result = -1;
 
-        Arrays.sort(arr);
+        long answer = 0;
 
-        StringBuffer sb = new StringBuffer();
-        for (String str : arr) {
-            sb.append(str);
+        // 제곱근 확인
+        int sqrt = (int) (Math.sqrt(n));
+        System.out.println("## sqrt = "+ sqrt);
+
+        if ( Math.pow(sqrt, 2) == n) {
+            answer = (long) Math.pow(sqrt + 1, 2);
+        } else {
+            answer = -1;
         }
 
-        answer = Long.parseLong(sb.reverse().toString());
-
-        assertEquals(result, answer);
-
-        long test = IntStream.rangeClosed(3, 5).summaryStatistics().getSum();
-        System.out.println(test);
+        assertEquals(answer, result);
     }
 
     @Test
@@ -528,6 +528,10 @@ public class SolutionTest {
 
 //        Arrays.stream(arr3).mapToLong(Long::).toString();
 //        System.out.println(Arrays.toString(arr3));
+
+
+        double sqrt2 = Math.sqrt(3);
+        System.out.println("sqrt2 = " + sqrt2);
 
     }
 }
