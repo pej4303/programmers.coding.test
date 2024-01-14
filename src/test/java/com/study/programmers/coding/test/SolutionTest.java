@@ -29,6 +29,8 @@ public class SolutionTest {
         assertEquals(result,answer);
     }
 
+
+
     @Test
     @DisplayName("이진수 TO 십진수")
     void test17() {
