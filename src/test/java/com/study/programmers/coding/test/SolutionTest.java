@@ -2,12 +2,6 @@ package com.study.programmers.coding.test;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.*;
-import java.util.regex.Pattern;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SolutionTest {
