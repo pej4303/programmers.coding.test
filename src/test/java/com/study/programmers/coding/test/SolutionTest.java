@@ -2,6 +2,12 @@ package com.study.programmers.coding.test;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SolutionTest {
@@ -23,7 +29,26 @@ public class SolutionTest {
         assertEquals(result,answer);
     }
 
+    @Test
+    void test02() {
+//        String[] participant = { "leo", "kiki", "eden" };
+//        String[] completion = { "eden", "kiki" };
 
+        String[] participant = { "mislav", "stanko", "mislav", "ana" };
+        String[] completion = { "stanko", "ana", "mislav" };
+
+        String answer = "";
+        for (int i=0; i<participant.length; i++) {
+            if ( !Arrays.asList(completion).contains(participant[i]) ) {
+                answer = participant[i];
+            } else {
+                if (Arrays.asList(participant).contains(participant[i])) {
+                    answer = participant[i];
+                }
+            }
+        }
+        System.out.println(answer);
+    }
 
     @Test
     @DisplayName("이진수 TO 십진수")
