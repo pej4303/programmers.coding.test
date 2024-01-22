@@ -2,51 +2,44 @@ package com.study.programmers.coding.test;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.util.MultiValueMap;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SolutionTest {
+
     @Test
-    @DisplayName("하샤드 수")
-    void test01() {
-        boolean answer = true;
+    @DisplayName("key - value 이용")
+    void test02() {
+        String[] participant = { "leo", "kiki", "eden" };
+        String[] completion = { "eden", "kiki" };
 
-        int x = 10;
-        boolean result = true;
+//        String[] participant = {"mislav", "stanko", "mislav", "ana"};
+//        String[] completion = {"stanko", "ana", "mislav"};
+        String answer = "";
 
-        int tmp = 0;
-        for (String str : String.valueOf(x).split("")) {
-            tmp += Integer.parseInt(str);
+        HashMap<String, Integer> map = new HashMap<>();
+
+        for (String player : participant) {
+            map.put(player, map.getOrDefault(player, 0) + 1);
         }
 
-        answer = (x % tmp == 0) ? true : false;
+        for (String player : completion) {
+            map.put(player, map.get(player) - 1);
+        }
 
-        assertEquals(result,answer);
-    }
-
-    @Test
-    void test02() {
-//        String[] participant = { "leo", "kiki", "eden" };
-//        String[] completion = { "eden", "kiki" };
-
-        String[] participant = { "mislav", "stanko", "mislav", "ana" };
-        String[] completion = { "stanko", "ana", "mislav" };
-
-        String answer = "";
-        for (int i=0; i<participant.length; i++) {
-            if ( !Arrays.asList(completion).contains(participant[i]) ) {
-                answer = participant[i];
-            } else {
-                if (Arrays.asList(participant).contains(participant[i])) {
-                    answer = participant[i];
-                }
+        for ( String strKey : map.keySet() ){
+            if ( map.get(strKey) != 0 ) {
+                answer = strKey;
             }
         }
+
         System.out.println(answer);
     }
 
