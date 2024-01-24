@@ -65,36 +65,27 @@ public class SolutionTest {
 
     public static void main(String[] args) {
         int answer = 0;
-        int num = 6;
-
+        int num = 626331;   // int형인 경우 오버플러우 발생한다고함, 어떻게 발생하는지 확인해볼것!
         if (1 < num && num <=8_000_000) {
             // 단, 주어진 수가 1인 경우에는 0을, 작업을 500번 반복할 때까지 1이 되지 않는다면 –1을 반환
-            answer = callCollatz(num, 0);
-            System.out.println(answer);
-        }
-    }
+            while (true) {
+                num = (num % 2 == 0) ? num / 2 : num * 3 + 1;
+                answer++;
 
-    static int callCollatz(int num, int callCnt) {
-        int tmp = 0;
+                System.out.println(num);
 
-        // 결과로 나온 수에 같은 작업을 1이 될 때까지 반복합니다.
-        if (num == 1) {
-            return callCnt;
-        } else if (num != 1 && callCnt == 500) {
-            return -1;
-        }
+                if (num != 1 && answer == 500) {
+                    answer = -1;
+                    break;
+                }
 
-        if (num % 2 == 0) {
-            // 1-1. 입력된 수가 짝수라면 2로 나눕니다.
-            tmp = num / 2;
-        } else {
-            // 1-2. 입력된 수가 홀수라면 3을 곱하고 1을 더합니다.
-            tmp = num * 3 + 1;
+                if (num == 1) {
+                    break;
+                }
+            }
         }
 
-        callCnt++;
-
-        return callCollatz(tmp, callCnt);
+        // System.out.println("answer = " + answer);
     }
 }
 
