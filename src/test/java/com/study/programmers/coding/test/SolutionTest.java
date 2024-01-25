@@ -4,10 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.MultiValueMap;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,6 +35,27 @@ public class SolutionTest {
         for ( String strKey : map.keySet() ){
             if ( map.get(strKey) != 0 ) {
                 answer = strKey;
+            }
+        }
+
+        System.out.println(answer);
+    }
+
+    @Test
+    @DisplayName("key-value2")
+    void test01() {
+        String[] phone_book = {"119", "97674223", "1195524421"};
+//        String[] phone_book = {"123", "456", "789"};
+
+        boolean answer = true;
+
+        // 효율성 테스트에서 통과하지 못했음
+        for (String phone : phone_book) {
+            for (int i=0; i<phone_book.length; i++) {
+                if ( !phone.equals(phone_book[i]) && phone.startsWith(phone_book[i]) ) {
+                    answer = false;
+                    break;
+                }
             }
         }
 
