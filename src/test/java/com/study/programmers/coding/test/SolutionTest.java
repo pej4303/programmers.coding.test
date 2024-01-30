@@ -2,13 +2,7 @@ package com.study.programmers.coding.test;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.util.MultiValueMap;
-
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class SolutionTest {
 
@@ -45,18 +39,49 @@ public class SolutionTest {
     @DisplayName("key-value2")
     void test01() {
         String[] phone_book = {"119", "97674223", "1195524421"};
-//        String[] phone_book = {"123", "456", "789"};
+//        String[] phone_book = { "123", "12345", "1245", "1243", "12"};
 
         boolean answer = true;
 
         // 효율성 테스트에서 통과하지 못했음
+//        for (String phone : phone_book) {
+//            for (int i=0; i<phone_book.length; i++) {
+//                if ( !phone.equals(phone_book[i]) && phone.startsWith(phone_book[i]) ) {
+//                    answer = false;
+//                    break;
+//                }
+//            }
+//        }
+
+        Arrays.sort(phone_book);
+
         for (String phone : phone_book) {
+            System.out.println(phone);
             for (int i=0; i<phone_book.length; i++) {
+                System.out.println("## " + phone_book[i]);
                 if ( !phone.equals(phone_book[i]) && phone.startsWith(phone_book[i]) ) {
                     answer = false;
                     break;
                 }
             }
+        }
+
+        System.out.println(answer);
+    }
+
+    @Test
+    @DisplayName("해시 - 포켓몬")
+    void test03() {
+        int[] nums = {3, 3, 3, 2, 2, 2};
+        int answer = 0;
+
+        int maxCnt = nums.length / 2;
+        int[] tmp = Arrays.stream(nums).distinct().toArray();
+
+        if (maxCnt == tmp.length) {
+            answer = maxCnt;
+        } else {
+            answer = tmp.length;
         }
 
         System.out.println(answer);
