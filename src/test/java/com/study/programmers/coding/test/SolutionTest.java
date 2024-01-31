@@ -70,19 +70,32 @@ public class SolutionTest {
     }
 
     @Test
-    @DisplayName("해시 - 포켓몬")
+    @DisplayName("key-value3")
     void test03() {
-        int[] nums = {3, 3, 3, 2, 2, 2};
-        int answer = 0;
+//        String[] phone_book = {"119", "97674223", "1195524421" };
+        String[] phone_book = {"123", "456", "789"};
+        boolean answer = true;
 
-        int maxCnt = nums.length / 2;
-        int[] tmp = Arrays.stream(nums).distinct().toArray();
+        Arrays.sort(phone_book);
+        System.out.println(Arrays.toString(phone_book));
 
-        if (maxCnt == tmp.length) {
-            answer = maxCnt;
-        } else {
-            answer = tmp.length;
+        for (int i=0; i<phone_book.length-1; i++) {
+            System.out.println(phone_book[i] + " / " + phone_book[i+1]);
+            if ( phone_book[i].startsWith(phone_book[i+1]) ) {
+                answer = false;
+                break;
+            }
         }
+
+
+//        for (String phone : phone_book) {
+//            for (int i=0; i<phone_book.length; i++) {
+//                if ( !phone.equals(phone_book[i]) && phone.startsWith(phone_book[i]) ) {
+//                    answer = false;
+//                    break;
+//                }
+//            }
+//        }
 
         System.out.println(answer);
     }
@@ -106,30 +119,5 @@ public class SolutionTest {
         System.out.println("결과 = " + result);
     }
 
-
-    public static void main(String[] args) {
-        int answer = 0;
-        int num = 626331;   // int형인 경우 오버플러우 발생한다고함, 어떻게 발생하는지 확인해볼것!
-        if (1 < num && num <=8_000_000) {
-            // 단, 주어진 수가 1인 경우에는 0을, 작업을 500번 반복할 때까지 1이 되지 않는다면 –1을 반환
-            while (true) {
-                num = (num % 2 == 0) ? num / 2 : num * 3 + 1;
-                answer++;
-
-                System.out.println(num);
-
-                if (num != 1 && answer == 500) {
-                    answer = -1;
-                    break;
-                }
-
-                if (num == 1) {
-                    break;
-                }
-            }
-        }
-
-        // System.out.println("answer = " + answer);
-    }
 }
 
