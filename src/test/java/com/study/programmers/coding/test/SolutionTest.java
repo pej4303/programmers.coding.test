@@ -1,8 +1,13 @@
 package com.study.programmers.coding.test;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.cglib.beans.FixedKeySet;
+import org.springframework.util.Assert;
+
 import java.util.*;
+import java.util.stream.Stream;
 
 public class SolutionTest {
 
@@ -92,12 +97,20 @@ public class SolutionTest {
 //            for (int i=0; i<phone_book.length; i++) {
 //                if ( !phone.equals(phone_book[i]) && phone.startsWith(phone_book[i]) ) {
 //                    answer = false;
-//                    break;
+//                    break;"
 //                }
 //            }
 //        }
 
         System.out.println(answer);
+    }
+
+
+    @Test
+    void test04() {
+        int[] citations = {3, 0, 6, 1, 5};
+
+        Stream<Object> tmp = Arrays.stream(citations).mapToObj(String::valueOf);
     }
 
     @Test
@@ -119,5 +132,50 @@ public class SolutionTest {
         System.out.println("결과 = " + result);
     }
 
+    @Test
+    void test05() {
+//         int[] numbers = {6, 10, 2};
+//         String answer = "6210";
+
+//        int[] numbers = {34,30,9,5,3};
+//        String answer = "9534330";
+
+        int[] numbers = {0,0};
+        String answer = "0";
+
+        String result = "";
+
+        if (numbers.length >= 1 && numbers.length <= 1_00_000) {
+            if ( Arrays.stream(numbers).allMatch(i -> i == 0) ) {
+                System.out.println("ddd");
+                result = "0";
+            } else {
+                // 숫자를 문자열로 변환
+                String[] tmp = new String[numbers.length];
+                for (int i = 0; i < numbers.length; i++) {
+                    tmp[i] = String.valueOf(numbers[i]);
+                }
+
+                // Comparator를 재정의하여 내림차순 정렬
+                Arrays.sort(tmp, new Comparator<String>() {
+                    public int compare(String a, String b) {
+                        String num1 = a + b;
+                        String num2 = b + a;
+                        return num2.compareTo(num1);
+                    }
+                });
+
+                System.out.println(Arrays.toString(tmp));
+
+
+                for (String s : tmp) {
+                    result += String.join("", s);
+                }
+                System.out.println(result);
+            }
+
+            Assertions.assertEquals(answer, result);
+        }
+    }
 }
 
