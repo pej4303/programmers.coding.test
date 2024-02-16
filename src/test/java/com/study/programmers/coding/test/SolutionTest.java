@@ -7,6 +7,7 @@ import org.springframework.cglib.beans.FixedKeySet;
 import org.springframework.util.Assert;
 
 import java.util.*;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class SolutionTest {
@@ -108,9 +109,35 @@ public class SolutionTest {
 
     @Test
     void test04() {
-        int[] citations = {3, 0, 6, 1, 5};
+        int left = 13;
+        int right = 17;
+        int answer = 0;
 
-        Stream<Object> tmp = Arrays.stream(citations).mapToObj(String::valueOf);
+        Long cnt = 0L;
+        for (int i= left; i<= right; i++) {
+            int tmp = i;
+            // 약수의 개수를 구하기
+            cnt = IntStream.rangeClosed(1, tmp).filter(num -> tmp % num == 0).count();
+
+            if ( cnt % 2 == 0) {
+                answer += tmp;
+            } else {
+                answer -= tmp;
+            }
+        }
+
+
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(4);
+        list.add(6);
+        list.add(6);
+        list.add(2);
+
+        int[] tmp = list.stream().distinct().sorted().mapToInt(Integer::intValue).toArray();
+
+        System.out.println(Arrays.toString(tmp));
+
     }
 
     @Test
@@ -142,6 +169,10 @@ public class SolutionTest {
 
         int[] numbers = {0,0};
         String answer = "0";
+
+        int sum = IntStream.rangeClosed(0, 9).sum();
+        int tmpSum = Arrays.stream(numbers).sum();
+
 
         String result = "";
 
