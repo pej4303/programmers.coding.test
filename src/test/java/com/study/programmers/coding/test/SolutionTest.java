@@ -4,8 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.cglib.beans.FixedKeySet;
+import org.springframework.scheduling.support.SimpleTriggerContext;
 import org.springframework.util.Assert;
 
+import javax.print.DocFlavor;
 import java.util.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -76,68 +78,56 @@ public class SolutionTest {
     }
 
     @Test
-    @DisplayName("key-value3")
     void test03() {
-//        String[] phone_book = {"119", "97674223", "1195524421" };
-        String[] phone_book = {"123", "456", "789"};
-        boolean answer = true;
+        int n = 45;
+        int answer = 7;
+        int reuslt = 0;
 
-        Arrays.sort(phone_book);
-        System.out.println(Arrays.toString(phone_book));
-
-        for (int i=0; i<phone_book.length-1; i++) {
-            System.out.println(phone_book[i] + " / " + phone_book[i+1]);
-            if ( phone_book[i].startsWith(phone_book[i+1]) ) {
-                answer = false;
-                break;
-            }
+        String a = "";
+        while(n > 0){
+            a = (n % 3) + a;
+            n /= 3;
         }
+        a = new StringBuilder(a).reverse().toString();
+        System.out.println(a);
 
-
-//        for (String phone : phone_book) {
-//            for (int i=0; i<phone_book.length; i++) {
-//                if ( !phone.equals(phone_book[i]) && phone.startsWith(phone_book[i]) ) {
-//                    answer = false;
-//                    break;"
-//                }
-//            }
-//        }
-
+        answer = Integer.parseInt(a,3);
         System.out.println(answer);
+
+        Assertions.assertEquals(answer, reuslt);
     }
 
 
     @Test
     void test04() {
-        int left = 13;
-        int right = 17;
+        int n = 1;
         int answer = 0;
+        int reuslt = 1;
 
-        Long cnt = 0L;
-        for (int i= left; i<= right; i++) {
-            int tmp = i;
-            // 약수의 개수를 구하기
-            cnt = IntStream.rangeClosed(1, tmp).filter(num -> tmp % num == 0).count();
 
-            if ( cnt % 2 == 0) {
-                answer += tmp;
-            } else {
-                answer -= tmp;
+        StringBuffer sb = new StringBuffer();
+        int tmp = n;
+
+        while (true) {
+            sb.append(tmp % 3);
+            tmp = tmp / 3;
+            if ( tmp < 3) {
+                sb.append(tmp);
+                break;
             }
         }
 
+        System.out.println(tmp);
 
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(4);
-        list.add(6);
-        list.add(6);
-        list.add(2);
+        String[] strArr = sb.toString().split("");
+        for (int i=0; i<strArr.length; i++) {
+            if ( Integer.parseInt(strArr[i]) > 0 ) {
+                double pow = Math.pow(3, (strArr.length-1 - i));
+                answer += (Integer.parseInt(strArr[i]) * pow);
+            }
+        }
 
-        int[] tmp = list.stream().distinct().sorted().mapToInt(Integer::intValue).toArray();
-
-        System.out.println(Arrays.toString(tmp));
-
+        Assertions.assertEquals(answer, reuslt);
     }
 
     @Test
