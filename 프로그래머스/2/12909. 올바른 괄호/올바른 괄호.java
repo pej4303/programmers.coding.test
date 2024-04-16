@@ -18,6 +18,7 @@ class Solution {
             }
         }*/
         
+        // String에서 Character로 변경하니 효율성 테스트 성공하였음
         Stack<Character> stack = new Stack<>();  
         for (char c : s.toCharArray()) {  
             if (c == '(') {  
