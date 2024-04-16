@@ -1,9 +1,8 @@
 package com.study.programmers.coding.test;
 
-
-import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.*;
 
 public class SolutionTest {
@@ -126,46 +125,62 @@ public class SolutionTest {
     }
 
     @Test
+    @DisplayName("stack 테스트")
+    void stackTest() {
+        /**
+         * Stack : 후입선출(LIFO, Last-In-First-Out) 구조를 가지는 자료구조
+         *         스택은 주로 데이터를 임시로 저장하거나 역추적을 위해 사용됩니다.
+         *         Stack 클래스는 Vector 클래스를 확장하여 구현되었기 때문에, 배열 기반의 동적 크기 조정이 가능한 스택을 제공합니다.
+         *
+         * push(element): 스택의 맨 위에 요소를 추가합니다.
+         * pop(): 스택의 맨 위에 있는 요소를 제거하고 반환합니다.
+         * peek(): 스택의 맨 위에 있는 요소를 반환합니다. 제거하지 않습니다.
+         * empty(): 스택이 비어있는지 여부를 확인합니다.
+         * search(element): 스택에서 지정된 요소를 찾아 그 위치를 반환합니다. 스택의 맨 위 요소부터 거리를 1로 시작하여 카운트합니다. 요소가 발견되지 않으면 -1을 반환합니다.
+         */
+        Stack<Integer> stack = new Stack<>();
+
+        // 스택에 요소 추가
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+
+        // 스택의 맨 위 요소 확인
+        System.out.println("맨 위 요소: " + stack.peek()); // 출력: 3
+
+        // 스택에서 요소 제거
+        int removedElement = stack.pop();
+        System.out.println("제거된 요소: " + removedElement); // 출력: 3
+
+        // 스택이 비어있는지 확인
+        System.out.println("스택이 비어있는가? " + stack.empty()); // 출력: false
+    }
+
+    @Test
+    @DisplayName("올바른 괄호")
     void test2() {
-        String s = "one4seveneight";
-        int result = 1478;
-        int answer = 0;
+//        String s = "(())()";
+        String s = "(()(";
+        boolean result = false;
+        boolean answer = false;
 
-        StringBuffer sb = new StringBuffer();
-
-        Map<String, Integer> map = new HashMap<>();
-        map.put( "zero"  , 0);
-        map.put( "one"   , 1);
-        map.put( "two"   , 2);
-        map.put( "three" , 3);
-        map.put( "four"  , 4);
-        map.put( "five"  , 5);
-        map.put( "six"   , 6);
-        map.put( "seven" , 7);
-        map.put( "eight" , 8);
-        map.put( "nine"  , 9);
-
-        if (1 <= s.length() && s.length() <= 50) {
-            // while (tmp != -1) {
-            for (String key : map.keySet()) {
-                int value = map.get(key);
-                // System.out.println("Key: " + key + ", Value: " + value);
-//                System.out.println(s.indexOf(value));
-                if (s.indexOf(key) != -1) {
-
-                    sb.append(String.valueOf(value));
-                    s = s.replace(key, "");
+        Stack<String> stack = new Stack<>();
+        for (String str : s.split("")) {
+            if ("(".equals(str)) {
+                stack.push(str); // 요소 넣기
+            } else if (")".equals(str)) {
+                if (stack.isEmpty()) {
+                    result = false;
                 }
-                if (s.indexOf(String.valueOf(value)) != -1) {
-                    sb.append(String.valueOf(value));
-                    s.replace(String.valueOf(value), "");
-                }
-
-                System.out.println(sb.toString());
+                stack.pop(); // 맨 위에 있는 요소를 제거
             }
-            // }
-
-            System.out.println(sb.toString());
         }
+
+        // () 한쌍으로 올바른 괄호라면 개수가 0이 나옴
+        System.out.println("개수 : " + stack.size());
+
+        result = stack.isEmpty();
+
+        Assertions.assertEquals(answer, result);
     }
 }
