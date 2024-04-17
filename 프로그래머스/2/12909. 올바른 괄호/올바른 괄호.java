@@ -19,17 +19,17 @@ class Solution {
         }*/
         
         // String에서 Character로 변경하니 효율성 테스트 성공하였음
-        Stack<Character> stack = new Stack<>();  
-        for (char c : s.toCharArray()) {  
-            if (c == '(') {  
-                stack.push('(');  
-            } else if (c == ')') {  
-                if (stack.isEmpty()) {  
-                    return false;  
-                }  
-                stack.pop();  
-            }  
-        }  
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (c == '(') {
+                stack.push('(');
+            } else if (c == ')') {
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                stack.pop();
+            }
+        }
         // () 한쌍으로 올바른 괄호라면 개수가 0이 나옴
         // System.out.println("개수 : " + stack.size());
         

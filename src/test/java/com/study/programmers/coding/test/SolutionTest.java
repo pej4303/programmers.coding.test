@@ -125,7 +125,7 @@ public class SolutionTest {
     }
 
     @Test
-    @DisplayName("stack 테스트")
+    @DisplayName("Stack 테스트")
     void stackTest() {
         /**
          * Stack : 후입선출(LIFO, Last-In-First-Out) 구조를 가지는 자료구조
@@ -164,15 +164,29 @@ public class SolutionTest {
         boolean result = false;
         boolean answer = false;
 
-        Stack<String> stack = new Stack<>();
-        for (String str : s.split("")) {
-            if ("(".equals(str)) {
-                stack.push(str); // 요소 넣기
-            } else if (")".equals(str)) {
+//        Stack<String> stack = new Stack<>();
+//        for (String str : s.split("")) {
+//            if ("(".equals(str)) {
+//                stack.push(str); // 요소 넣기
+//            } else if (")".equals(str)) {
+//                if (stack.isEmpty()) {
+//                    result = false;
+//                }
+//                stack.pop(); // 맨 위에 있는 요소를 제거
+//            }
+//        }
+
+        // String에서 Character로 변경하니 효율성 테스트 성공하였음
+        // char는 원시 타입으로 단일문자일때, String보다 더 빠름
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (c == '(') {
+                stack.push('(');
+            } else if (c == ')') {
                 if (stack.isEmpty()) {
                     result = false;
                 }
-                stack.pop(); // 맨 위에 있는 요소를 제거
+                stack.pop();
             }
         }
 
@@ -180,6 +194,80 @@ public class SolutionTest {
         System.out.println("개수 : " + stack.size());
 
         result = stack.isEmpty();
+
+        Assertions.assertEquals(answer, result);
+    }
+
+    @Test
+    @DisplayName("Queue 테스트")
+    void queueTest() {
+        /**
+         * Queue : 선입선출(FIFO, First-In-First-Out) 구조를 가지는 자료구조
+         *         큐는 주로 데이터를 임시로 저장하거나 작업을 처리할 때 사용됩니다.
+         * 큐 구현체 : LinkedList, ArrayDeque
+         *
+         * add(element): 큐에 요소를 추가합니다. 큐의 용량 제한을 초과하면 예외가 발생합니다.
+         * offer(element): 큐에 요소를 추가합니다. 용량 제한을 초과하면 false를 반환합니다.
+         * remove(): 큐의 맨 앞에 있는 요소를 제거하고 반환합니다. 큐가 비어있으면 예외가 발생합니다.
+         * poll(): 큐의 맨 앞에 있는 요소를 제거하고 반환합니다. 큐가 비어있으면 null을 반환합니다.
+         * element(): 큐의 맨 앞에 있는 요소를 반환하되, 큐를 수정하지는 않습니다. 큐가 비어있으면 예외가 발생합니다.
+         * peek(): 큐의 맨 앞에 있는 요소를 반환하되, 큐를 수정하지는 않습니다. 큐가 비어있으면 null을 반환합니다.
+         */
+        Queue<String> queue = new LinkedList<>();
+
+        // 큐에 요소 추가
+        queue.add("Java");
+        queue.add("Python");
+        queue.add("C++");
+
+        // 큐의 모든 요소 출력
+        System.out.println("Queue: " + queue);
+
+        // 큐에서 요소 제거 및 출력
+        String removedElement = queue.remove();
+        System.out.println("Removed Element: " + removedElement);
+
+        // 큐의 맨 앞 요소 확인
+        String peekedElement = queue.peek();
+        System.out.println("Peeked Element: " + peekedElement);
+
+        // 큐의 모든 요소 출력
+        System.out.println("Queue after removal: " + queue);
+    }
+
+    @Test
+    @DisplayName("프로세스")
+    void test3() {
+        int[] priorities = {1, 1, 9, 1, 1, 1};
+        int location = 0;
+        int answer = 0;
+        int result = 5;
+
+        // 우선순위 큐 선언(내림 차순)
+        PriorityQueue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
+
+        // 우선순위 큐에 우선순위 요소 추가
+        for (int i : priorities) {
+            queue.offer(i);
+        }
+        System.out.println("Queue: " + queue);
+
+
+        // 큐가 빌 때까지 반복
+        while (!queue.isEmpty()) {
+            // 기존 우선순위 배열 순회
+            for (int i = 0; i < priorities.length; i++) {
+                // 현재 작업이 location과 같으면 answer 반환
+                if (location == i) {
+                    result = i;
+                }
+                // 현재 작업의 위치 찾기
+                if (queue.peek() == priorities[i]) {
+                    queue.poll();
+                    answer++;
+                }
+            }
+        }
 
         Assertions.assertEquals(answer, result);
     }
