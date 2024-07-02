@@ -11,7 +11,6 @@ class Solution {
             answer = s.substring(startIdx, startIdx+2);
         } else {
             startIdx = (s.length() / 2);
-            System.out.println(startIdx);
             answer = s.substring(startIdx, startIdx+1);
         }
         
