@@ -1,4 +1,4 @@
-package elice;
+package elice.day2;
 
 import java.util.*;
 /**

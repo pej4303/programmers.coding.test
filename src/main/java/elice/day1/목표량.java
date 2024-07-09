@@ -1,4 +1,4 @@
-package elice;
+package elice.day1;
 
 /**
  * ### 목표량
