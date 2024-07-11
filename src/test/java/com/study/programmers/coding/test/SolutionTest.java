@@ -7,19 +7,30 @@ import java.util.*;
 
 public class SolutionTest {
     public static void main(String[] args) {
-        int[][] data = {
-            {1, 20300104, 100, 80},
-            {2, 20300804, 847, 37},
-            {3, 20300401, 10, 8},
-        };
-        String ext = "date";
-        int val_ext = 20300501;
-        String sort_by = "remain";
+//        int[][] data = {
+//            {1, 20300104, 100, 80},
+//            {2, 20300804, 847, 37},
+//            {3, 20300401, 10, 8},
+//        };
+//        String ext = "date";
+//        int val_ext = 20300501;
+//        String sort_by = "remain";
+//
+//        int[][] result = solution(data, ext, val_ext, sort_by);
+//
+//        Arrays.stream(result).forEach(i -> System.out.println(Arrays.toString(i)));
 
-        int[][] result = solution(data, ext, val_ext, sort_by);
-
-        Arrays.stream(result).forEach(i -> System.out.println(Arrays.toString(i)));
+//        int i =0 ;
+//        while (true) {
+//            i++;
+//            System.out.println(i);
+//            if (i == 4) {
+//                break;
+//            }
+//        }
     }
+
+
 
     public static int getIdx (String type) {
         int idx = 0;
