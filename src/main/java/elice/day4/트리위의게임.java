@@ -1,9 +1,7 @@
 package elice.day4;
 
-import java.sql.SQLOutput;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner;
-
 /**
  * ### 트리위의 게임
  * 정점 N개의 트리에서 두 사람이 게임을 진행하려 한다.
@@ -32,7 +30,7 @@ import java.util.Scanner;
  *  + i번째 줄에는 말의 시작위치가 i번 정점일 때의 결과를 출력한다.
  *  + 선공이 이긴다면 1을 후공이 이긴다면 0을 출력한다.
  */
-import java.util.*;
+
 class Main {
     public static void main(String[] args) {
         // 입력
@@ -47,7 +45,7 @@ class Main {
             numArr[i][1] = sc.nextInt();
         }
 
-        // 트리 노드 구성 => treeNode 사용 안하고
+        // 트리 노드 구성
         ArrayList<Integer>[] treeList = new ArrayList[n + 1];
         for (int i=1; i<=n; i++) {
             treeList[i] = new ArrayList<>();
@@ -61,8 +59,6 @@ class Main {
             treeList[parent].add(child);
             System.out.println(treeList[parent].toString());
         }
-
-
         //System.out.println("트리에 담기");
         // dfs
         int[] dp = new int[n + 1];
