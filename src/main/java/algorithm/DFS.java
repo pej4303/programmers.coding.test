@@ -46,7 +46,7 @@ public class DFS {
 //        }
 
         // 1번노드에서 DFS 실행
-        dfs(1, treeList, visited, result);
+        dfs(2, treeList, visited, result);
 
         // 출력
         System.out.println(result.toString());
@@ -61,20 +61,20 @@ public class DFS {
      */
     public static void dfs(int node, ArrayList<Integer>[] treeList, boolean[] visited, ArrayList<Integer> result) {
         Stack<Integer> stack = new Stack<>();
-        // 시작 노드를 스택에 넣습니다.
+        // 1. 시작 노드를 스택에 넣습니다.
         stack.push(node);
 
-        // 스택이 빌 때까지 계속 반복합니다.
+        // 5. 스택이 빌 때까지 계속 반복합니다.
         while (!stack.isEmpty()) {
-            // 스택에서 노드를 하나 꺼냅니다.
+            // 2. 스택에서 노드를 하나 꺼냅니다.
             int cur = stack.pop();
-            // 꺼낸 노드의 방문여부 체크 합니다.
+            // 3. 꺼낸 노드의 방문여부 체크 합니다.
             visited[cur] = true;
             // 결과 리스트 넣습니다.
             result.add(cur);
 
             for (int i : treeList[cur]) {
-                // 방문한 노드에 인접한 노드들중에 방문하지 않은 노드를 스택에 추가합니다.
+                // 4. 방문한 노드에 인접한 노드들중에 방문하지 않은 노드를 스택에 추가합니다.
                 if (!visited[i]) {
                     stack.push(i);
                 }
