@@ -26,6 +26,7 @@ public class DFS {
         };
 
         int n = array.length;    // 노드의 개수
+        // n + 1 을 한 이유 : 배열의 인덱스와 노드 번호와 일치시키기 위해서
         boolean[] visited = new boolean[n + 1];  // 방문여부 체크 배열
         ArrayList<Integer>[] treeList = new ArrayList[n + 1];
 
@@ -46,7 +47,7 @@ public class DFS {
 //        }
 
         // 1번노드에서 DFS 실행
-        dfs(2, treeList, visited, result);
+        dfs(1, treeList, visited, result);
 
         // 출력
         System.out.println(result.toString());
