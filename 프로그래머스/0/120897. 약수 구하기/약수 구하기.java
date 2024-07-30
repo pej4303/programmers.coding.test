@@ -9,7 +9,7 @@ class Solution {
             }
         }
         
-        System.out.println(list.toString());
+        // System.out.println(list.toString());
         
         int[] answer = list.stream().mapToInt(Integer::intValue).toArray();
         
