@@ -16,9 +16,9 @@ public class Solution {
                 stack.push(strArr[i]);
             }
         }
-
+        // 합계 구하기
         for (String item : stack) {
-            answer += Integer.parseInt(item); // 스택에 남아 있는 값의 합을 구함
+            answer += Integer.parseInt(item);
         }
 
         return answer;
