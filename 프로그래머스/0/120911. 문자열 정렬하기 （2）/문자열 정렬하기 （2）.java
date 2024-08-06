@@ -9,10 +9,8 @@ class Solution {
         }
         
         // 문자열을 소문자로 변환
-        my_string = my_string.toLowerCase();
-        
-        // 문자 배열 정렬
-        char[] arr = my_string.toCharArray();
+        char[] arr = my_string.toLowerCase().toCharArray();
+        // 배열 정렬
         Arrays.sort(arr);
         
         // 정렬된 문자 배열을 문자열로 변환
