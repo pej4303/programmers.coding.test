@@ -12,6 +12,8 @@ class Solution {
             return answer;
         }
         
+        // 방법1) 이중 for문
+        /*
         Arrays.sort(s1);
         Arrays.sort(s2);
         
@@ -32,7 +34,16 @@ class Solution {
                }
             }
         }
-        
+        */
+        // 방법2) Set 이용
+        Set<String> set1 = new HashSet<>(Arrays.asList(s1));
+        Set<String> set2 = new HashSet<>(Arrays.asList(s2));
+
+        // 교집합을 구하기
+        set1.retainAll(set2);
+
+        // 교집합의 크기 반환
+        answer = set1.size();
         
         return answer;
     }
