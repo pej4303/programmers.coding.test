@@ -1,10 +1,10 @@
 # [level 0] 문자열 계산하기 - 120902 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120902#qna) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120902) 
 
 ### 성능 요약
 
-메모리: 68.7 MB, 시간: 0.13 ms
+메모리: 75 MB, 시간: 0.13 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 08월 12일 18:19:50
+2024년 08월 12일 18:21:40
 
 ### 문제 설명
 
