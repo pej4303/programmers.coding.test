@@ -3,15 +3,6 @@ class Solution {
     public int[] solution(String[] keyinput, int[] board) {
         int[] position = {0 , 0};
         
-        // 유효성검사
-        /*if ( 1 > board[0] || 99 > board[0] ) {
-            return position;
-        }
-        if ( 1 > board[1] || 99 > board[1] ) {
-            return position;
-        }*/
-        
-        
         int maxRight = board[0] / 2;
         int minLeft = (board[0] / 2) * -1;
         int minDown = (board[1] / 2) * -1;
