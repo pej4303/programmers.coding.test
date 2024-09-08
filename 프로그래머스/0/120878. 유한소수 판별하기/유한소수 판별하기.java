@@ -73,30 +73,9 @@ class Solution {
             } else {
                 result = 2;
             }
-        } else {
+        } else { // 소수 2개 이상이면 무한소수임
            result = 2;
         }
-        
-        /*boolean twoFlag = false;
-        boolean fiveFlag = false;
-        boolean elselag = false;
-        
-        for (Integer num : set) {
-            if (num == 2) {
-                twoFlag = true;
-            } else if (num == 5) {
-                fiveFlag = true;
-            } else {
-                elselag = true;
-            }
-        }
-        
-        if (twoFlag || fiveFlag && !elselag) {
-            result = 1;
-        } else {
-            result = 2;
-        }*/
-        
         
         return result;
     }
