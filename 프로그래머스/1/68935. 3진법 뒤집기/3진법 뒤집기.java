@@ -32,7 +32,7 @@ class Solution {
         
         // 1. 3진법으로 변환
         String str = Integer.toString(n, 3);
-        System.out.println(str);
+        // System.out.println(str);
         // 2. 뒤집기
         String tmp = new StringBuilder(str).reverse().toString();
         // 3. 10진법으로 변환
