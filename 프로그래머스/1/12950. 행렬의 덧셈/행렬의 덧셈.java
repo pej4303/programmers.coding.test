@@ -6,10 +6,7 @@ class Solution {
         
         for (int i=0; i<len; i++) {
             for (int j=0; j<arr1[i].length; j++) {
-                //System.out.println(arr1[i][j]);
-                //System.out.println(arr2[i][j]);
                 answer[i][j] = arr1[i][j] + arr2[i][j];
-                // System.out.println(arr2[i][j]);
             }   
         }
         
