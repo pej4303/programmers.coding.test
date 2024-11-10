@@ -69,7 +69,7 @@ public class DFS {
         while (!stack.isEmpty()) {
             // 2. 스택에서 노드를 하나 꺼냅니다.
             int cur = stack.pop();
-            // 3. 꺼낸 노드의 방문여부 체크 합니다.
+            // 3. 꺼낸 노드 방문여부 체크 합니다.
             visited[cur] = true;
             // 결과 리스트 넣습니다.
             result.add(cur);
