@@ -5,8 +5,12 @@ public class Main {
 
         int month = sc.nextInt();
         int day = sc.nextInt();
-        
-        // 왜 틀렸다고 하지..?
+
+        /*
+         * 반례)
+         * 입력 : 2, 17
+         * 출력 : 아무것도 안 나옴
+         */
         /*if ( month < 2 && day < 18 ) {
             System.out.println("Before");
         } else if ( month > 2 && day > 18 ) {
@@ -14,7 +18,7 @@ public class Main {
         } else if ( month == 2 && day == 18 ) {
             System.out.println("Special");
         }*/
-        
+
         if ( month < 2 ) {
             System.out.println("Before");
         } else if ( month == 2 ) {
