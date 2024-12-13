@@ -1,19 +1,20 @@
-import java.util.*;
+import java.io.*;
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int n = sc.nextInt();
-        int tmp = sc.nextInt();
+        int n = Integer.parseInt(br.readLine());
+        String[] arr = br.readLine().split(" ");
 
-        int max = tmp;
-        int min = tmp;
-        for (int i=2; i<=n; i++) {
-            tmp = sc.nextInt();
-            max = Math.max(max, tmp);
-            min = Math.min(min, tmp);
+        int max = Integer.parseInt(arr[0]);
+        int min = Integer.parseInt(arr[0]);
+
+        for (int i=1; i<n; i++) {
+            max = Math.max(max, Integer.parseInt(arr[i]));
+            min = Math.min(min, Integer.parseInt(arr[i]));
         }
 
-        System.out.println(String.format("%d %d", min, max));
+        System.out.println( String.format("%d %d", min, max));
     }
 }
