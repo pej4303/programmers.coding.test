@@ -3,13 +3,13 @@ class Solution {
         StringBuilder sb = new StringBuilder();
         char[] arr = s.toCharArray();
         boolean isUpper = true;
-        
+
         for (int i=0; i<arr.length; i++) {
             if (arr[i] == ' ') {
                 sb.append(arr[i]);
                 isUpper = true;
             } else {
-                if ( isUpper && Character.isLetter(arr[i]) ) {
+                if ( isUpper ) {
                     // 대문자로 변환
                     sb.append(Character.toUpperCase(arr[i]));
                 } else {
@@ -19,7 +19,7 @@ class Solution {
                 isUpper = false;
             }
         }
-        
+
         return sb.toString();
     }
 }
