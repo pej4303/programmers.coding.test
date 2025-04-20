@@ -24,6 +24,7 @@ public class Main {
             int b = Integer.parseInt(st.nextToken());
 
             arr[a][b] = 1;
+            // "연결된 쌍"이라는 표현만 있고 방향성 언급 없음 -> 양방향
             // 양방향인가 싶어서 추가함
             arr[b][a] = 1;
         }
