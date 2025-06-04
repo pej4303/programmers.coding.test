@@ -1,40 +1,41 @@
 import java.util.*;
-
 class Solution {
     boolean solution(String s) {
-        if (s.length() > 100000) {
-            return false;
-        }
-        
-        /*Stack<String> stack = new Stack<>();
-        for (String str : s.split("")) {
-            if ("(".equals(str)) {
-                stack.push(str); // 요소 넣기
-            } else if (")".equals(str)) {
-                if (stack.isEmpty()) {
-                    return false;
-                }
-                stack.pop(); // 맨 위에 있는 요소를 제거
-            }
-        }*/
-        
-        // String에서 Character로 변경하니 효율성 테스트 성공하였음
-        Stack<Character> stack = new Stack<>();
-        for (char c : s.toCharArray()) {
-            if (c == '(') {
-                stack.push('(');
-            } else if (c == ')') {
-                if (stack.isEmpty()) {
-                    return false;
-                }
-                stack.pop();
-            }
-        }
-        // () 한쌍으로 올바른 괄호라면 개수가 0이 나옴
-        // System.out.println("개수 : " + stack.size());
-        
-        // answer = stack.isEmpty();
+        boolean answer = true;
 
-        return stack.isEmpty();
+        /* 설계 흐름 */
+        
+        /*
+        방법1)
+        1. 스택 생성
+        2. 문자열 s를 순회 - for문 이용
+        3. 로직 처리 
+          -  () 가 되면 pop()
+        4. 스택이 empty 이면 true, 아니면 false를 반환
+        */
+        
+        // 1. 스택 생성
+        Stack<Character> stack = new Stack<>();
+        // 2. 문자열 s를 순회 - for문 이용
+        char[] arr = s.toCharArray();
+        for (int i=0; i<arr.length; i++) {
+            // System.out.println(c);
+            
+            // 3. 로직 처리
+            if (!stack.isEmpty() && stack.peek() == '(' && arr[i] == ')') {
+                // () 가 되면 pop()
+                stack.pop();
+            } else {
+                stack.push(arr[i]);
+            }
+            
+        }
+        
+        // System.out.println("isEmpty = " + stack.isEmpty());
+        
+        // 4. 스택이 empty 이면 true, 아니면 false를 반환
+        answer = stack.isEmpty();
+        
+        return answer;
     }
 }
