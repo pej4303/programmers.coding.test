@@ -19,7 +19,6 @@ public class Main {
         arr = new int[n][n];
         visited = new boolean[n][n];
 
-        StringTokenizer st = null;
         for (int i=0; i<n; i++) {
             String line = br.readLine();
             for (int j=0; j<n; j++) {
@@ -38,7 +37,7 @@ public class Main {
         }
 
         // 3. 오름차순으로 정렬
-        Collections.sort(list);
+        list.sort(null);
 
         // 4. 출력
         System.out.println(list.size());
