@@ -1,25 +1,17 @@
 class Solution {
-    public String solution(String s) {
-        StringBuilder sb = new StringBuilder();
-        char[] arr = s.toCharArray();
-        boolean isUpper = true;
+        public String solution(String s) {
+            StringBuilder sb = new StringBuilder();
 
-        for (int i=0; i<arr.length; i++) {
-            if (arr[i] == ' ') {
-                sb.append(arr[i]);
-                isUpper = true;
-            } else {
-                if ( isUpper ) {
-                    // 대문자로 변환
+            char[] arr = s.toLowerCase().toCharArray();
+            
+            for (int i=0; i<arr.length; i++) {
+                if (i == 0 || arr[i-1] == ' ') {
                     sb.append(Character.toUpperCase(arr[i]));
                 } else {
-                    // 소문자로 변환
-                    sb.append(Character.toLowerCase(arr[i]));
+                    sb.append(arr[i]);
                 }
-                isUpper = false;
             }
-        }
 
-        return sb.toString();
+            return sb.toString();
+        }
     }
-}
